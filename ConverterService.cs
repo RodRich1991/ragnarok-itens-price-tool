@@ -55,8 +55,8 @@ namespace Arkaik_Monster_Json_Enchancer
         {
             // Configurando o serializador para ignorar valores nulos
             var serializer = new SerializerBuilder()
-                //.WithNamingConvention(CamelCaseNamingConvention.Instance) // Define o estilo camelCase
                 .ConfigureDefaultValuesHandling(DefaultValuesHandling.OmitDefaults) // Ignora valores nulos
+                .WithTypeInspector(inner => new CustomTypeInspector(inner)) // Usa um inspecionador customizado
                 .Build();
 
             // Serializando os objetos para uma string YAML
